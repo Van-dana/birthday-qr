@@ -1,0 +1,122 @@
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday 🎂</title>
+
+<!-- QR Code Library -->
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        background: radial-gradient(circle, #ffecd2, #fcb69f);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Segoe UI', sans-serif;
+        overflow: hidden;
+    }
+
+    .container {
+        background: white;
+        padding: 30px;
+        border-radius: 20px;
+        text-align: center;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        max-width: 420px;
+        animation: zoom 1s ease;
+    }
+
+    @keyframes zoom {
+        from { transform: scale(0.6); opacity: 0; }
+        to { transform: scale(1); opacity: 1; }
+    }
+
+    h1 { color: #ff4081; }
+    p { font-size: 18px; }
+
+    input, button {
+        padding: 8px;
+        width: 80%;
+        margin: 8px 0;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        text-align: center;
+    }
+
+    button {
+        background: #ff4081;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    button:hover { background: #e91e63; }
+
+    .emoji {
+        font-size: 60px;
+        animation: bounce 1.5s infinite;
+    }
+
+    @keyframes bounce {
+        50% { transform: translateY(-15px); }
+    }
+
+    img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        display: none;
+        margin: 10px auto;
+    }
+
+    #qrcode {
+        margin-top: 15px;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="emoji">🎂🎉</div>
+    <h1>Happy Birthday</h1>
+
+    <input type="text" id="nameInput" placeholder="Enter name">
+    <input type="file" accept="image/*" onchange="loadPhoto(event)">
+    <button onclick="showWish()">Celebrate 🎊</button>
+
+    <h2 id="nameText"></h2>
+    <img id="photo">
+    <p id="wishText"></p>
+
+    <h3>📱 Scan to Share</h3>
+    <div id="qrcode"></div>
+</div>
+
+<script>
+function showWish() {
+    let name = document.getElementById("nameInput").value || "Special One";
+    document.getElementById("nameText").innerHTML = "Dear " + name + " 💖";
+    document.getElementById("wishText").innerHTML =
+        "Wishing you happiness, love, and sweet surprises 🎁✨<br>Have an amazing year ahead! 🌟";
+}
+
+// Load photo
+function loadPhoto(event) {
+    const img = document.getElementById("photo");
+    img.src = URL.createObjectURL(event.target.files[0]);
+    img.style.display = "block";
+}
+
+// Generate QR for current page URL
+new QRCode(document.getElementById("qrcode"), {
+    text: window.location.href,
+    width: 150,
+    height: 150
+});
+</script>
+
+</body>
+</html>                                                                                                                                                            give this code in git hub
